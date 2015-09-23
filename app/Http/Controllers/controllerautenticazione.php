@@ -31,7 +31,8 @@ class controllerautenticazione extends Controller
         $password=$req->input("password");
         if(Auth::attempt(array('name'=>$username,'password'=>$password)))
         {
-            echo "Login corretto";
+            header("location: /amministrazione/dashboard");
+            exit;
         }
         else
         {
