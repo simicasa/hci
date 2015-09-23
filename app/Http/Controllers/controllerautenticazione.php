@@ -7,7 +7,7 @@ use Hash;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\User;
 class controllerautenticazione extends Controller
 {
     /**
@@ -19,6 +19,12 @@ class controllerautenticazione extends Controller
     {
         return view("login");
     }
+    
+        public function registrazione()
+    {
+        return view("registrazione");
+    } 
+    
     public function autenticazione(Request $req)
     {
         $username=$req->input("username");
@@ -27,10 +33,12 @@ class controllerautenticazione extends Controller
         {
             echo "Login corretto";
         }
-        else{
+        else
+        {
             echo "Errore";
         }
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -47,9 +55,34 @@ class controllerautenticazione extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $req)
     {
-        //
+        $username=$req->input("name");
+        $email=$req->input("email");
+        $password=$req->input("password");
+        $password2=$req->input("password_confirmation");
+        $this->validate($req,[
+            'name'=> 'required |unique:users',
+            'email'=>'required|email|unique:users',
+            'password'=>'required|min:6|confirmed',
+            'password_confirmation'=>'required|min:6',
+        ],[
+            'name.required'=>'Inserire il nome!',
+            'email.required'=>'Inserire il proprio indirizzo email!',
+            'email.unique'=>'Indirizzo email già esistente!',
+            'email.email'=>'L\'indirizzo specificato deve essere un indirizzo email valido.',
+            'password.required'=>'Scegliere una password!',
+            'password.min'=>'Inserire una password di almeno 6 caratteri',
+            'password.confirmed'=>'Errore,la password inserita non corrisponde a quella di conferma',
+            'password_confirmation.required'=>'Password errata'
+        ]
+        );
+        $utente=new User;
+        $utente->name=$username;
+        $utente->email=$email;
+        $utente->password=Hash::make($password);
+        $utente->save();
+        echo "L'utente " . $utente->name . " &egrave; stato registrato";
     }
 
     /**
