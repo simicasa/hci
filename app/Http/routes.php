@@ -15,6 +15,7 @@ Route::get("/","controllerautenticazione@index");// prima / rappresenta il perco
 Route::post("/login","controllerautenticazione@autenticazione");
 
 Route::get("/amministrazione/registrazione","controllerautenticazione@registrazione");
+Route::get("/amministrazione/listautenti","controllerautenticazione@shows");
 Route::post("/amministrazione/registrazione","controllerautenticazione@store");
 
 Route::get("/amministrazione/inserimentomarker","controllermarker@index");
