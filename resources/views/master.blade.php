@@ -38,7 +38,7 @@
                                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Marker<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#">Modifica marker</a>
+                                        <a href="/amministrazione/modificamarker">Modifica marker</a>
                                     </li>
                                     <li>
                                         <a href="/amministrazione/inserimentomarker">Aggiungi marker</a>

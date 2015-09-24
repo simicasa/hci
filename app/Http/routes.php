@@ -19,6 +19,6 @@ Route::post("/amministrazione/registrazione","controllerautenticazione@store");
 
 Route::get("/amministrazione/inserimentomarker","controllermarker@index");
 Route::post("/amministrazione/inserimentomarker","controllermarker@store");
-
+Route::get("/amministrazione/modificamarker","controllermarker@shows");
 
 Route::get("/amministrazione/dashboard","dashboard@index");
