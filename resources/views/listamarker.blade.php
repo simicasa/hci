@@ -8,6 +8,7 @@
             <th width="33%">Latitudine</th>
             <th width="33%">Longitudine</th>
             <th width="34%">Nome luogo</th>
+            <th width="33%">Azioni</th>
         </tr>
     </thhead>
     <tbody>
@@ -16,8 +17,11 @@
             <td>{!! $elem->latitudine !!}</td>
             <td>{!! $elem->longitudine !!}</td>
             <td>{!! $elem->nome_luogo !!}</td>
+            <td><input type="button" value="modifica"</td>
         </tr>
         @endforeach
     </tbody>
 </table>
+<form>
+</form>
 @stop
