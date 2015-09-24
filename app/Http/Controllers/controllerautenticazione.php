@@ -92,9 +92,10 @@ class controllerautenticazione extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function shows()
     {
-        //
+        $val=User::get();
+        return view("listautenti")->with("mlista",$val);
     }
 
     /**

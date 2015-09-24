@@ -67,7 +67,7 @@
                                 <a href="#"><i class="fa fa-files-o fa-fw"></i> Uteni<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#">Lista utenti</a>
+                                        <a href="/amministrazione/listautenti">Lista utenti</a>
                                     </li>
                                     <li>
                                         <a href="/amministrazione/registrazione">Aggiungi utenti</a>
