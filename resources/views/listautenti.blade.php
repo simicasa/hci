@@ -1,8 +1,15 @@
 @extends("master") 
 @section("titolo","listautenti")
 @section("corpo")
-<table width="70%" border="1">
-    <caption><div align="center"><b>Utenti presenti</b></div></caption>
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Utenti</h1>
+                </div>
+            </div>
+
+<table class="table table-striped table-bordered table-hover">
     <thhead>
         <tr>
             <th width="33%">Nome</th>
