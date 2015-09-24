@@ -10,7 +10,6 @@
             </div>
 
 <table class="table table-striped table-bordered table-hover">>
-    <caption><div align="center"><b>Utenti presenti</b></div></caption>
     <thhead>
         <tr>
             <th width="33%">Username</th>

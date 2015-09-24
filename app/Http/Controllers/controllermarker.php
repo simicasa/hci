@@ -40,7 +40,7 @@ class controllermarker extends Controller
         $latitudine=$req->input("latitudine");
         $longitudine=$req->input("longitudine");
         $nomeluogo=$req->input("nomeluogo");
-        $iduser=1;
+        $iduser=Auth::user()->id;
         $this->validate($req,[
             'latitudine'=> 'required',
             'longitudine'=>'required',

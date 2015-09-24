@@ -28,6 +28,4 @@
         @endforeach
     </tbody>
 </table>
-<form>
-</form>
 @stop

@@ -31,8 +31,7 @@ class controllerautenticazione extends Controller
         $password=$req->input("password");
         if(Auth::attempt(array('name'=>$username,'password'=>$password)))
         {
-            header("location: /amministrazione/dashboard");
-            exit;
+            return redirect()->intended("/amministrazione/dashboard");
         }
         else
         {
