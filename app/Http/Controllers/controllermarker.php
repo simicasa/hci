@@ -57,7 +57,9 @@ class controllermarker extends Controller
         $marker->nome_luogo=$nomeluogo;
         $marker->id_utente=$iduser;
         $marker->save();
-        echo "Il marker &egrave; stato inserito correttamente!";
+        
+        return redirect()->intended("/amministrazione/listamarker?val=1");
+        
     }
 
     /**
@@ -66,10 +68,10 @@ class controllermarker extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function shows()
+    public function shows(Request $req)
     {
         $val=marker::get();//ritorna i volori della tabella del database
-        return view("listamarker")->with("mlista",$val);
+        return view("listamarker")->with("mlista",$val)->with('val',$req->input('val'));
     }
 
     /**

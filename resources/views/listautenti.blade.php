@@ -8,6 +8,12 @@
                     <h1 class="page-header">Modifica amministratori</h1>
                 </div>
             </div>
+@if($val == 1)
+<div class="alert alert-success alert-dismissable">
+<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+Inserimento avvenuto con successo.
+</div>
+@endif
 
 <table class="table table-striped table-bordered table-hover">>
     <thhead>
