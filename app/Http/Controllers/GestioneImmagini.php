@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Auth;
 use App\marker;
+use App\Immagini;
 use Image;
 use Input;
+use Auth;
 
-class controllermarker extends Controller
+class GestioneImmagini extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +20,7 @@ class controllermarker extends Controller
      */
     public function index()
     {
-        return view("inserimentoMarker");
+        return view('InserimentoImmagini')->with('marker',marker::get());
     }
 
     /**
@@ -38,41 +39,33 @@ class controllermarker extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $req)
+    public function store(Request $request)
     {
-        $latitudine=$req->input("latitudine");
-        $longitudine=$req->input("longitudine");
-        $nomeluogo=$req->input("nomeluogo");
-        $iduser=Auth::user()->id;
-        $this->validate($req,[
-            'latitudine'=> 'required|numeric',
-            'longitudine'=>'required',
-            'nomeluogo'=>'required'   
-        ],[
-            'latitudine.numeric'=>'La latitudine non è stata inserita corretamente', 
-            'latitudine.required'=>'Inserire la latitudine!',
-            'longitudine.required'=>'Inserire la longitudine!',
-            'nomeluogo.required'=>'Scegliere un nome del luogo!'
-        ]
-        );
-        $marker= new marker;
-        $marker->latitudine=$latitudine;
-        $marker->longitudine=$longitudine;
-        $marker->nome_luogo=$nomeluogo;
-        $marker->id_utente=$iduser;
-        $marker->save();
+        $image=Input::file('Immagine');
         
-Image::make(Input::file('Immagine'))->resize(300, null, function ($constraint) {
-    $constraint->aspectRatio();
-})->save('foo.jpg');
+        $filename  = time() . '.' . $image->getClientOriginalExtension();
+        $percorso = 'upload/' . $filename;
+        Image::make($image->getRealPath())->resize(300, null, function($constraint){
+            $constraint->aspectRatio();
+        })->save($percorso);
+          
+        $iduser=Auth::user()->id;
+        $Immagine = new Immagini;
+        $Immagine->Immagine=$percorso;
+        $Immagine->Testo=$request->input('Testo');
+        $Immagine->DataFoto=$request->input('data');
+        $Immagine->id_marker=$request->input('marker');
+        $Immagine->id_utente=$iduser;
+        $Immagine->save();
 
         return redirect()->intended("/amministrazione/listamarker?val=1");
         
     }
-    public function ritornaMarkerPerAPP(){
-        
-        
-        return json_encode(marker::select('latitudine','longitudine','nome_luogo')->get());
+
+    public function GetImageFromApp(Request $req){
+        $id = $req->input('id');
+        $elem = json_encode(Immagini::select('Immagine','Testo','DataFoto')->where('id_marker','=',$id)->get());
+        return $elem;
     }
     /**
      * Display the specified resource.
@@ -80,10 +73,9 @@ Image::make(Input::file('Immagine'))->resize(300, null, function ($constraint) {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function shows(Request $req)
+    public function show($id)
     {
-        $val=marker::get();//ritorna i volori della tabella del database
-        return view("listamarker")->with("mlista",$val)->with('val',$req->input('val'));
+        //
     }
 
     /**

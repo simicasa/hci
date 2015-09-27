@@ -15,15 +15,23 @@ Route::get("/","controllerautenticazione@index");// prima / rappresenta il perco
 Route::post("/login","controllerautenticazione@autenticazione");
 Route::get("/amministrazione/logout","controllerautenticazione@logout");
 
+//Gestione utenti
 Route::get("/amministrazione/registrazione","controllerautenticazione@registrazione");
 Route::get("/amministrazione/listautenti","controllerautenticazione@shows");
 Route::post("/amministrazione/registrazione","controllerautenticazione@store");
 
+//Gestione marker
 Route::get("/amministrazione/inserimentomarker","controllermarker@index");
 Route::post("/amministrazione/inserimentomarker","controllermarker@store");
 Route::get("/amministrazione/listamarker","controllermarker@shows");
 
 Route::get("/amministrazione/dashboard","dashboard@index");
 
+//gestione immagini
+Route::get("/amministrazione/InserisciImmagine","GestioneImmagini@index");
+Route::post("/amministrazione/InserimentoImmagini","GestioneImmagini@store");
 
+//Comunicazione con app
+Route::post("/app/prelevaMarker","controllermarker@ritornaMarkerPerAPP");
 
+Route::post("/app/prelevaImmagini","GestioneImmagini@GetImageFromApp");

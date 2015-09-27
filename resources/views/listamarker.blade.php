@@ -1,5 +1,5 @@
 @extends("master") 
-@section("titolo","listamarker")
+@section("titolo","lista marker")
 @section("corpo")
 
             <div class="row">

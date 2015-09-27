@@ -2,6 +2,7 @@
 <html>
     <head>
         @include('header')
+        <title>@yield("titolo")</title>
     </head>
 
     <body>
@@ -15,14 +16,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">StoryMap</a>
+                    <a class="navbar-brand" href="/amministrazione/dashboard">StoryMap</a>
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                         </a>
-                        <ul class="dropdown-menu dropdown-user">
+                        <ul class="dropdown-menu dropdown-messages">
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Impostazioni</a>
                             </li>
                             <li class="divider"></li>
@@ -58,7 +59,7 @@
                                         <a href="#">Modifica immagini</a>
                                     </li>
                                     <li>
-                                        <a href="#">Elimina immagini</a>
+                                        <a href="/amministrazione/InserisciImmagine">Inserisci Immagine</a>
                                     </li>
                                 </ul>
                             </li>

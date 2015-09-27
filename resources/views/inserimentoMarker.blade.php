@@ -16,8 +16,8 @@
 @endif
     <div class="row">
         <div class="col-lg-6">
-            <form method="post" action="inserimentomarker">
-                  <input name="_token" type="hidden" value="{!! csrf_token() !!}">
+            <form method="post" action="inserimentomarker" enctype="multipart/form-data" accept-charset="UTF-8">
+                 <input name="_token" type="hidden" value="{!! csrf_token() !!}">
                 <div class="form-group">
                     <label>Nome Luogo</label>
                     <input type="text" name="nomeluogo" required class="form-control">
@@ -32,6 +32,10 @@
                     <label>Longitudine</label>
                     <input type="text" name="longitudine" required class="form-control">
                     <p class="help-block">Prelevare questa informazione da google maps</p>
+                </div>
+                <div class="form-group">
+                    <label>Immagine</label>
+                    <input type="file" name="Immagine" required class="form-control">
                 </div>
                 <input class="btn btn-default" type="submit" value="invia">
             </form>
