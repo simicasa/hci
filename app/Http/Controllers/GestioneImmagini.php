@@ -48,7 +48,6 @@ class GestioneImmagini extends Controller
         Image::make($image->getRealPath())->resize(300, null, function($constraint){
             $constraint->aspectRatio();
         })->save($percorso);
-          
         $iduser=Auth::user()->id;
         $Immagine = new Immagini;
         $Immagine->Immagine=$percorso;
@@ -58,7 +57,7 @@ class GestioneImmagini extends Controller
         $Immagine->id_utente=$iduser;
         $Immagine->save();
 
-        return redirect()->intended("/amministrazione/listamarker?val=1");
+        return redirect()->intended("/amministrazione/modificamarker");
         
     }
 

@@ -60,7 +60,7 @@ class controllermarker extends Controller
         $marker->id_utente=$iduser;
         $marker->save();
 
-        return redirect()->intended("/amministrazione/listamarker?val=1");
+        return redirect()->intended("/amministrazione/modificamarker?val=1");
         
     }
     public function ritornaMarkerPerAPP(){
@@ -74,10 +74,11 @@ class controllermarker extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function shows()
+    public function shows(Request $req)
     {
+        $stato=$req->input("val");
         $val=marker::get();//ritorna i volori della tabella del database
-        return view("listamarker")->with("mlista",$val);
+        return view("listamarker")->with("mlista",$val)->with("val",$stato);
     }
 
     /**
@@ -86,21 +87,43 @@ class controllermarker extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit(Request $req)
+    {-
+        $id=$req->input("id");
+        $riga=marker::find($id);
+        return view("modificamarker")->with("riga",$riga);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \/amministrazione/modificaIlluminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $req)
     {
-        //
+        $latitudine=$req->input("latitudine");
+        $longitudine=$req->input("longitudine");
+        $nomeluogo=$req->input("nomeluogo");
+        $id=$req->input("id");
+        $riga=marker::find($id);
+        $this->validate($req,[
+            'latitudine'=> 'required|numeric',
+            'longitudine'=>'required',
+            'nomeluogo'=>'required'   
+        ],[
+            'latitudine.numeric'=>'La latitudine non è stata inserita corretamente', 
+            'latitudine.required'=>'Inserire la latitudine!',
+            'longitudine.required'=>'Inserire la longitudine!',
+            'nomeluogo.required'=>'Scegliere un nome del luogo!'
+        ]
+        );
+        $riga->latitudine=$latitudine;
+        $riga->longitudine=$longitudine;
+        $riga->nome_luogo=$nomeluogo;
+        $riga->save();
+        return redirect()->intended("/amministrazione/modificamarker?val=2");
     }
 
     /**
@@ -109,8 +132,11 @@ class controllermarker extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $req)
     {
-        //
+        $id=$req->input("id");
+        $riga=marker::find($id);
+        $riga->delete();
+        return redirect()->intended("/amministrazione/modificamarker?val=3");
     }
 }

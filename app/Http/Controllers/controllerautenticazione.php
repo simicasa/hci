@@ -82,7 +82,7 @@ class controllerautenticazione extends Controller
         $utente->email=$email;
         $utente->password=Hash::make($password);
         $utente->save();
-        echo "L'utente " . $utente->name . " &egrave; stato registrato";
+        return redirect()->intended("/amministrazione/listautenti?val=1");
     }
 
     /**
@@ -91,10 +91,11 @@ class controllerautenticazione extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function shows()
+    public function shows(Request $req)
     {
+        $stato=$req->input("val");
         $val=User::get();
-        return view("listautenti")->with("mlista",$val);
+        return view("listautenti")->with("mlista",$val)->with("val",$stato);
     }
 
     /**
@@ -103,9 +104,11 @@ class controllerautenticazione extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $req)
     {
-        //
+        $id=$req->input("id");
+        $riga=User::find($id);
+        return view("modificautente")->with("riga",$riga);
     }
 
     /**
@@ -115,9 +118,34 @@ class controllerautenticazione extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $req)
     {
-        //
+        $username=$req->input("name");
+        $email=$req->input("email");
+        $password=$req->input("password");
+        $password2=$req->input("password_confirmation");
+        $this->validate($req,[
+            'name'=> 'required |unique:users',
+            'email'=>'required|email',
+            'password'=>'required|min:6|confirmed',
+            'password_confirmation'=>'required|min:6',
+        ],[
+            'name.required'=>'Inserire il nome!',
+            'email.required'=>'Inserire il proprio indirizzo email!',
+            'email.email'=>'L\'indirizzo specificato deve essere un indirizzo email valido.',
+            'password.required'=>'Scegliere una password!',
+            'password.min'=>'Inserire una password di almeno 6 caratteri',
+            'password.confirmed'=>'Errore,la password inserita non corrisponde a quella di conferma',
+            'password_confirmation.required'=>'Password errata'
+        ]
+        );
+        $id=$req->input("id");
+        $riga=User::find($id);
+        $riga->name=$username;
+        $riga->email=$email;
+        $riga->password=Hash::make($password);
+        $riga->save();
+        return redirect()->intended("/amministrazione/listautenti?val=2");
     }
 
     /**
@@ -126,8 +154,11 @@ class controllerautenticazione extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $req)
     {
-        //
+        $id=$req->input("id");
+        $riga=User::find($id);
+        $riga->delete();
+        return redirect()->intended("/amministrazione/listautenti?val=3");
     }
 }

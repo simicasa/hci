@@ -18,11 +18,17 @@ Route::post("/login","controllerautenticazione@autenticazione");
 Route::get("/amministrazione/registrazione","controllerautenticazione@registrazione");
 Route::get("/amministrazione/listautenti","controllerautenticazione@shows");
 Route::post("/amministrazione/registrazione","controllerautenticazione@store");
+Route::get("/amministrazione/modificautente","controllerautenticazione@edit");
+Route::post("/amministrazione/modificautente","controllerautenticazione@update");
+Route::get("/amministrazione/eliminautente","controllerautenticazione@destroy");
 
 //Gestione marker
 Route::get("/amministrazione/inserimentomarker","controllermarker@index");
 Route::post("/amministrazione/inserimentomarker","controllermarker@store");
 Route::get("/amministrazione/modificamarker","controllermarker@shows");
+Route::get("/amministrazione/modifica","controllermarker@edit");
+Route::post("/amministrazione/modifica","controllermarker@update");
+Route::get("/amministrazione/elimina","controllermarker@destroy");
 
 Route::get("/amministrazione/dashboard","dashboard@index");
 
