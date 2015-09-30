@@ -20,7 +20,12 @@ class controllerautenticazione extends Controller
         return view("login");
     }
     
-        public function registrazione()
+    public function logout(){
+        Auth::logout();
+        return redirect()->intended("/");
+    }
+    
+    public function registrazione()
     {
         return view("registrazione");
     } 

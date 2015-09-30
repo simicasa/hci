@@ -16,6 +16,7 @@ Route::post("/login","controllerautenticazione@autenticazione");
 
 //Gestione utenti
 Route::get("/amministrazione/registrazione","controllerautenticazione@registrazione");
+Route::get("/amministrazione/logout","controllerautenticazione@logout");
 Route::get("/amministrazione/listautenti","controllerautenticazione@shows");
 Route::post("/amministrazione/registrazione","controllerautenticazione@store");
 Route::get("/amministrazione/modificautente","controllerautenticazione@edit");
