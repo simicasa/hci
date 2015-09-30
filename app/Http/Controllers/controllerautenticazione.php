@@ -82,7 +82,7 @@ class controllerautenticazione extends Controller
         $utente->email=$email;
         $utente->password=Hash::make($password);
         $utente->save();
-        return redirect()->intended("/amministrazione/listautenti?val=1");
+        echo "L'utente " . $utente->name . " &egrave; stato registrato";
     }
 
     /**
@@ -91,15 +91,12 @@ class controllerautenticazione extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function shows(Request $req)
+    public function shows()
     {
         $val=User::get();
-        return view("listautenti")->with("mlista",$val)->with('val',$req->input('val'));
+        return view("listautenti")->with("mlista",$val);
     }
-    public function logout(){
-        Auth::logout();
-        return redirect()->intended("/");
-    }
+
     /**
      * Show the form for editing the specified resource.
      *

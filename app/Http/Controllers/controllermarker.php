@@ -7,8 +7,6 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\marker;
-use Image;
-use Input;
 
 class controllermarker extends Controller
 {
@@ -61,10 +59,6 @@ class controllermarker extends Controller
         $marker->nome_luogo=$nomeluogo;
         $marker->id_utente=$iduser;
         $marker->save();
-        
-Image::make(Input::file('Immagine'))->resize(300, null, function ($constraint) {
-    $constraint->aspectRatio();
-})->save('foo.jpg');
 
         return redirect()->intended("/amministrazione/listamarker?val=1");
         
@@ -80,10 +74,10 @@ Image::make(Input::file('Immagine'))->resize(300, null, function ($constraint) {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function shows(Request $req)
+    public function shows()
     {
         $val=marker::get();//ritorna i volori della tabella del database
-        return view("listamarker")->with("mlista",$val)->with('val',$req->input('val'));
+        return view("listamarker")->with("mlista",$val);
     }
 
     /**

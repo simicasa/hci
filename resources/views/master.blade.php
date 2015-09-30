@@ -27,7 +27,7 @@
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Impostazioni</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="/amministrazione/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -45,7 +45,7 @@
                                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Marker<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="/amministrazione/listamarker?val=0">Lista marker</a>
+                                        <a href="/amministrazione/modificamarker">Modifica marker</a>
                                     </li>
                                     <li>
                                         <a href="/amministrazione/inserimentomarker">Aggiungi marker</a>
@@ -68,7 +68,7 @@
                                 <a href="#"><i class="fa fa-files-o fa-fw"></i> Uteni<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="/amministrazione/listautenti?val=0">Lista utenti</a>
+                                        <a href="/amministrazione/listautenti">Lista utenti</a>
                                     </li>
                                     <li>
                                         <a href="/amministrazione/registrazione">Aggiungi utenti</a>
