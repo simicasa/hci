@@ -66,7 +66,7 @@ class GestioneImmagini extends Controller
         $Immagine->id_utente=$iduser;
         $Immagine->save();
 
-        return redirect()->intended("/amministrazione/modificamarker");
+        return redirect()->intended("/amministrazione/mostraimmagini?val=1");
         
     }
 
@@ -81,12 +81,11 @@ class GestioneImmagini extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
-    {
+    public function show(Request $req)
+    {        
+        $stato=$req->input("val");
         $var = Immagini::get();
-        foreach($var as $v){
-            echo "<img src='/" .$v->Immagine . "'>";
-        }
+        return view("mostraimmagini")->with("mlista",$var)->with("val",$stato);
     }
 
     /**

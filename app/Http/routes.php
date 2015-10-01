@@ -38,7 +38,7 @@ Route::group(['middleware' => 'logged'],function(){
 
     //gestione immagini
     Route::get("/amministrazione/InserisciImmagine","GestioneImmagini@index");
-    Route::get("/amministrazione/show","GestioneImmagini@show");
+    Route::get("/amministrazione/mostraimmagini","GestioneImmagini@show");
     Route::post("/amministrazione/InserimentoImmagini","GestioneImmagini@store");
 
     //Comunicazione con app
