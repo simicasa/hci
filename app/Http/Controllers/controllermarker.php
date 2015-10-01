@@ -17,7 +17,8 @@ class controllermarker extends Controller
      */
     public function index()
     {
-        return view("inserimentoMarker");
+        $val=marker::get();
+        return view("inserimentoMarker")->with('lista',$val);
     }
 
     /**
