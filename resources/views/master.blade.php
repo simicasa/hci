@@ -56,7 +56,7 @@
                                 <a href="#"><i class="fa fa-wrench fa-fw"></i> Immagini<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#">Modifica immagini</a>
+                                        <a href="/amministrazione/mostraimmagini">Modifica immagini</a>
                                     </li>
                                     <li>
                                         <a href="/amministrazione/InserisciImmagine">Inserisci Immagine</a>
@@ -65,7 +65,7 @@
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-files-o fa-fw"></i> Uteni<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-files-o fa-fw"></i> Utenti<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
                                         <a href="/amministrazione/listautenti">Lista utenti</a>
