@@ -81,9 +81,12 @@ class GestioneImmagini extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $var = Immagini::get();
+        foreach($var as $v){
+            echo "<img src='/" .$v->Immagine . "'>";
+        }
     }
 
     /**
