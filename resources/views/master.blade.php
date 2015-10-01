@@ -2,6 +2,7 @@
 <html>
     <head>
         @include('header')
+        @yield('testa')
         <title>@yield("titolo")</title>
     </head>
 
