@@ -14,6 +14,8 @@
 Route::get("/","controllerautenticazione@index");// prima / rappresenta il percorso quando apro 127.0.0.1 in questo caso la prima pagina visto che non c'è niente dopo /, controllerautenticazione è il nome del controller ed è una classe come metodo definisco index.
 Route::post("/login","controllerautenticazione@autenticazione");
 
+Route::post("/ajax/getimage","GestioneImmagini@getimagebyid");
+
 Route::group(['middleware' => 'logged'],function(){
     
 
@@ -40,6 +42,7 @@ Route::group(['middleware' => 'logged'],function(){
     Route::get("/amministrazione/InserisciImmagine","GestioneImmagini@index");
     Route::get("/amministrazione/mostraimmagini","GestioneImmagini@show");
     Route::post("/amministrazione/InserimentoImmagini","GestioneImmagini@store");
+    
 
     //Comunicazione con app
     Route::post("/app/prelevaMarker","controllermarker@ritornaMarkerPerAPP");

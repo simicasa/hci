@@ -84,7 +84,7 @@ class GestioneImmagini extends Controller
     public function show(Request $req)
     {        
         $stato=$req->input("val");
-        $var = Immagini::get();
+        $var = marker::get();
         return view("mostraimmagini")->with("mlista",$var)->with("val",$stato);
     }
 
@@ -94,6 +94,12 @@ class GestioneImmagini extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function getimagebyid(Request $req){
+        $immagini=Immagini::where("id_marker","=",$req->input("id"))->orderby("DataFoto")->get();
+        return json_encode($immagini);
+    }
+        
+    
     public function edit($id)
     {
         //
