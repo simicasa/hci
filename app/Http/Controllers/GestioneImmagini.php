@@ -41,6 +41,14 @@ class GestioneImmagini extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'Immagine'=> 'required|image'
+        ],[
+            'Immagine.required'=>'Immagine non presente',
+            'Immagine.image'=>'Immagine non valida',
+            
+        ]
+        );
         $image=Input::file('Immagine');
         
         $filename  = time() . '.' . $image->getClientOriginalExtension();
@@ -48,6 +56,7 @@ class GestioneImmagini extends Controller
         Image::make($image->getRealPath())->resize(300, null, function($constraint){
             $constraint->aspectRatio();
         })->save($percorso);
+        
         $iduser=Auth::user()->id;
         $Immagine = new Immagini;
         $Immagine->Immagine=$percorso;
