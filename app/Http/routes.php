@@ -43,7 +43,10 @@ Route::group(['middleware' => 'logged'],function(){
 
     //Comunicazione con app
     Route::post("/app/prelevaMarker","controllermarker@ritornaMarkerPerAPP");
-
     Route::post("/app/prelevaImmagini","GestioneImmagini@GetImageFromApp");
     
 });
+
+    //Comunicazione con app
+    Route::post("/app/prelevaMarker","controllermarker@ritornaMarkerPerAPP");
+    Route::post("/app/prelevaImmagini","GestioneImmagini@GetImageFromApp");
