@@ -67,7 +67,7 @@ class controllermarker extends Controller
     public function ritornaMarkerPerAPP(){
         
         
-        return json_encode(marker::select('latitudine','longitudine','nome_luogo')->get());
+        return json_encode(marker::select('id','latitudine','longitudine','nome_luogo')->get());
     }
     /**
      * Display the specified resource.
