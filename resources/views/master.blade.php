@@ -8,7 +8,7 @@
 
     <body>
         <div id="wrapper">
-
+            
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -84,7 +84,7 @@
                 @yield("corpo")
             </div>
         </div>
-
+        
         @include('footer')
     </body>
 

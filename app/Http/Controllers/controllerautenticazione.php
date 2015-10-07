@@ -15,9 +15,10 @@ class controllerautenticazione extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $req)
     {
-        return view("login");
+        $stato=$req->input("val");
+        return view("login")->with("val",$stato);
     }
     
     public function logout(){
@@ -40,7 +41,7 @@ class controllerautenticazione extends Controller
         }
         else
         {
-            echo "Errore";
+           return redirect()->intended("/?val=1");
         }
     }
 

@@ -89,7 +89,7 @@ class controllermarker extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $req)
-    {-
+    {
         $id=$req->input("id");
         $riga=marker::find($id);
         $val=marker::get();

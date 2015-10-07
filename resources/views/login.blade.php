@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+@if($val == 1)
+<div class="alert alert-danger">
+    Errore nell'autenticazione.
+    Username o password errati!
+</div>
+@endif
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

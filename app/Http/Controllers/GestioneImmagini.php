@@ -100,9 +100,11 @@ class GestioneImmagini extends Controller
     }
         
     
-    public function edit($id)
+    public function edit(Request $req)
     {
-        //
+        $id=$req->input("id");
+        $riga=Immagini::find($id);
+        return view("modificaimmagine")->with("riga",$riga);
     }
 
     /**

@@ -21,7 +21,7 @@
                     str=str+"<img src='/" + this.Immagine + "'>";
                     str=str+"<div class='testo'>" + this.Testo + "</div>";
                     str=str+"<div class='data'>" + this.DataFoto + "</div>";
-                    str=str+"<div class='modifica'><a href='#'><p class='fa fa-edit'>Modifica</p></a></div>";
+                    str=str+"<div class='modifica'><a href='/amministrazione/modificaimmagine'><p class='fa fa-edit'>Modifica</p></a></div>";
                     str=str+"<div class='elimina'><a href='#'><p class='fa fa-times-circle'>Elimina</p></a></div>";
                     str=str + "</div>";
                 });
