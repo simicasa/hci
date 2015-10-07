@@ -92,7 +92,8 @@ class controllermarker extends Controller
     {-
         $id=$req->input("id");
         $riga=marker::find($id);
-        return view("modificamarker")->with("riga",$riga);
+        $val=marker::get();
+        return view("modificamarker")->with("riga",$riga)->with("lista",$val);
     }
 
     /**
