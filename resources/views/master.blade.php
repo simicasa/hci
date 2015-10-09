@@ -25,7 +25,7 @@
                             <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-messages">
-                            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Impostazioni</a>
+                            <li><a href="/amministrazione/impostazioni"><i class="fa fa-gear fa-fw"></i> Impostazioni</a>
                             </li>
                             <li class="divider"></li>
                             <li><a href="/amministrazione/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>

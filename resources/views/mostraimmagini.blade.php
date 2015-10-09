@@ -21,8 +21,10 @@
                     str=str+"<img src='/" + this.Immagine + "'>";
                     str=str+"<div class='testo'>" + this.Testo + "</div>";
                     str=str+"<div class='data'>" + this.DataFoto + "</div>";
-                    str=str+"<div class='modifica'><a href='/amministrazione/modificaimmagine'><p class='fa fa-edit'>Modifica</p></a></div>";
-                    str=str+"<div class='elimina'><a href='#'><p class='fa fa-times-circle'>Elimina</p></a></div>";
+                    str=str+"<div class='modifica'><a href='/amministrazione/modificaimmagine?id=" + this.id + "'>";
+                    str=str+"<p class='fa fa-edit'>Modifica</p></a></div>";
+                    str=str+"<div class='elimina'><a href='/amministrazione/eliminaimmagine?id=" + this.id + "'>";
+                    str=str+"<p class='fa fa-times-circle'>Elimina</p></a></div>";
                     str=str + "</div>";
                 });
                 $("#risultato").html(str);
@@ -36,6 +38,21 @@
 @stop
 @section("titolo","mostraimmagini")
 @section("corpo")
+@if($val == 1)
+<div class="alert alert-success">
+    Inserimento avvenuto con successo
+</div>
+@endif
+@if($val == 2)
+<div class="alert alert-success">
+    Modifica avvenuta con successo
+</div>
+@endif
+@if($val == 3)
+<div class="alert alert-success">
+    Immagine eliminata con successo
+</div>
+@endif
 <input name="_token" type="hidden" value="{!! csrf_token() !!}">
     <div class="form-group">
         <label>Seleziona luogo</label>

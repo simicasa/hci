@@ -114,9 +114,33 @@ class GestioneImmagini extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $req)
     {
-        //
+        $testo=$req->input("Testo");
+        $data=$req->input("data");
+        $id=$req->input("id");
+        $riga=Immagini::find($id);
+        $this->validate($req,[
+            'Immagine'=> 'required|image'
+        ],[
+            'Immagine.required'=>'Immagine non presente',
+            'Immagine.image'=>'Immagine non valida',
+            
+        ]
+        );
+        $image=Input::file('Immagine');
+        
+        $filename  = time() . '.' . $image->getClientOriginalExtension();
+        $percorso = 'upload/' . $filename;
+        Image::make($image->getRealPath())->resize(300, null, function($constraint){
+            $constraint->aspectRatio();
+        })->save($percorso);
+        
+        $riga->Testo=$testo;
+        $riga->DataFoto=$data;
+        $riga->Immagine=$percorso;
+        $riga->save();
+        return redirect()->intended("/amministrazione/mostraimmagini?val=2");
     }
 
     /**
@@ -125,8 +149,11 @@ class GestioneImmagini extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $req)
     {
-        //
+        $id=$req->input("id");
+        $riga=Immagini::find($id);
+        $riga->delete();
+        return redirect()->intended("/amministrazione/mostraimmagini?val=3");
     }
 }
