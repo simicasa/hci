@@ -167,4 +167,35 @@ class controllerautenticazione extends Controller
         $riga->delete();
         return redirect()->intended("/amministrazione/listautenti?val=3");
     }
+    
+    public function option(Request $req)
+    {
+        return view("impostazioni");
+    }
+    public function saveoption(Request $req)
+    {
+        $username=$req->input("name");
+        $password=$req->input("password");
+        $password2=$req->input("password_confirmation");
+        $controllo1=[
+            'password'=>'required|min:6|confirmed',
+            'password_confirmation'=>'required|min:6'
+        ];
+        $controllo2=[
+            'password.required'=>'Scegliere una password!',
+            'password.min'=>'Inserire una password di almeno 6 caratteri',
+            'password.confirmed'=>'Errore,la password inserita non corrisponde a quella di conferma',
+            'password_confirmation.required'=>'Password errata'
+        ];
+        if(Auth::user()->name!=$username){
+            array_push($controllo1,['name'=> 'required |unique:users']);
+            array_push($controllo2,['name.required'=>'Inserire il nome!']);
+        }
+        $this->validate($req,$controllo1,$controllo2);
+        Auth::user()->name=$username;
+        Auth::user()->password=Hash::make($password);
+        Auth::user()->save();
+        return redirect()->intended("/amministrazione/listautenti?val=2");
+    }
+    
 }
