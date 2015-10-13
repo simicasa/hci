@@ -9,8 +9,10 @@
     </style>
 
 <script type="text/javascript">
-    var geocoder;
-    var map;
+      var geocoder;
+    var map;  
+
+
 function initMap() {
  geocoder = new google.maps.Geocoder();
  map = new google.maps.Map(document.getElementById('map'), {
