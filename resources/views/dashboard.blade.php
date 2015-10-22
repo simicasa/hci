@@ -32,13 +32,24 @@ function moveMap(){
     var latlng = new google.maps.LatLng(lat,log);
     geocoder.geocode({'latLng': latlng}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
-          map.setCenter(latlng);     
+          map.setCenter(latlng);
           } 
     else {
           alert('No results found');
         }
     });
     }
+function localizzapunto(lat,lng){
+    var latlng = new google.maps.LatLng(lat,lng);
+    geocoder.geocode({'latLng': latlng}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+          map.setCenter(latlng);     
+          } 
+    else {
+          alert('No results found');
+        }
+    });
+}
 </script>
 <script async defer
       src="https://maps.googleapis.com/maps/api/js?sensor=false&callback=initMap">
@@ -48,7 +59,7 @@ function moveMap(){
 @section("corpo")
 <div id="map"></div>
 <div><h1>Ultimi luoghi inseriti</h1></div>
-<table class="table table-striped table-bordered table-hover">
+<table id="tabella" class="table table-striped table-bordered table-hover">
     <thhead>
         <tr>
             <th width="34%">Nome luogo</th>
@@ -58,7 +69,7 @@ function moveMap(){
     </thhead>
     <tbody>
         @foreach($ultimi as $elem)
-        <tr>
+        <tr onclick="localizzapunto({!! $elem->lat !!},{!! $elem->lng !!})">
             <td>{!! $elem->nomeluogo !!}</td>
             <td>{!! $elem->nomeutente !!}</td>
         </tr>

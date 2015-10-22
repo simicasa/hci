@@ -17,7 +17,7 @@
 @endif
     <div class="row">
         <div class="col-lg-6">
-            <form method="post" action="impostazioni">
+            <form name="form1" method="post" action="impostazioni">
                 <input name="_token" type="hidden" value="{!! csrf_token() !!}">
              <div class="form-group">
                 <label>username</label>

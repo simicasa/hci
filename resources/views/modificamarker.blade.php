@@ -32,10 +32,7 @@
 
 
         });
-    }
-    
-
-    
+    } 
     function moveMap(){
          var lat = parseFloat($("input[name=latitudine]").val());
          var log = parseFloat($("input[name=longitudine]").val());
@@ -58,7 +55,7 @@
 @section("corpo")
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Modifica marker</h1>
+        <h1 class="page-header">Modifica luogo</h1>
     </div>
 </div>
 <div class="panel-body">
@@ -70,6 +67,9 @@
     </ul>
 @endif
     <div class="row">
+        <div class="col-lg-6">
+            <div id="map"></div>
+        </div>
         <div class="col-lg-6">
             <form method="post" action="modifica" >
                  <input name="_token" type="hidden" value="{!! csrf_token() !!}">
@@ -85,7 +85,6 @@
                     <label>Longitudine</label>
                     <input type="text" name="longitudine" value="{!! $riga->longitudine !!}"required class="form-control">
                 </div>
-                <div id="map"></div>
                 <input class="btn btn-default" type="submit" value="invia">
             </form>
         </div>

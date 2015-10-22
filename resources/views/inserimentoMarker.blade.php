@@ -32,10 +32,7 @@
 
 
         });
-    }
-    
-
-    
+    }  
     function moveMap(){
          var lat = parseFloat($("input[name=latitudine]").val());
          var log = parseFloat($("input[name=longitudine]").val());
@@ -58,7 +55,7 @@
 @section("corpo")
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Inserisci nuovo marker</h1>
+        <h1 class="page-header">Inserisci luogo</h1>
     </div>
 </div>
 <div class="panel-body">
@@ -71,9 +68,12 @@
 @endif
     <div class="row">
         <div class="col-lg-6">
+            <div id="map"></div>
+        </div>
+        <div class="col-lg-6">
             <form method="post" action="inserimentomarker" >
                  <input name="_token" type="hidden" value="{!! csrf_token() !!}">
-          <div class="form-group">
+                <div class="form-group">
                     <label>Nome Luogo</label>
                     <input type="text" name="nomeluogo" required class="form-control">
                     <p class="help-block">Esempio "Piazza Dante"</p>
@@ -85,7 +85,6 @@
                     <input type="text" name="longitudine" required class="form-control">
                     <p class="help-block">Prelevare questa informazione da google maps</p>
                 </div>
-                <div id="map"></div>
                 <input class="btn btn-default" type="submit" value="invia">
             </form>
         </div>

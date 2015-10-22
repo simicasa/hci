@@ -17,15 +17,15 @@
             $req.done(function(dt){
                 var str="";
                 $.each(dt,function(){
-                    str=str+"<div class='contenitore'>";
-                    str=str+"<img src='/" + this.Immagine + "'>";
-                    str=str+"<div class='testo'>" + this.Testo + "</div>";
-                    str=str+"<div class='data'>" + this.DataFoto + "</div>";
-                    str=str+"<div class='modifica'><a href='/amministrazione/modificaimmagine?id=" + this.id + "'>";
-                    str=str+"<p class='fa fa-edit'>Modifica</p></a></div>";
-                    str=str+"<div class='elimina'><a href='/amministrazione/eliminaimmagine?id=" + this.id + "'>";
-                    str=str+"<p class='fa fa-times-circle'>Elimina</p></a></div>";
-                    str=str + "</div>";
+                    str=str+"<div class='row'>";
+                    str=str+"<div class='col-lg-6'><img src='/" + this.Immagine + "'></div>";
+                    str=str+"<div class='col-lg-6'><label>Descrizione luogo</label><div class='testo'>" + this.Testo + "</div>";
+                    str=str+"<label>Data foto</label><div class='data'>" + this.DataFoto + "</div>";
+                    str=str + "</div></div>";
+                    str=str+"<a href='/amministrazione/modificaimmagine?id=" + this.id + "'>";
+                    str=str+"<p class='fa fa-edit'>Modifica</p></a>";
+                    str=str+"<a href='/amministrazione/eliminaimmagine?id=" + this.id + "'style='margin-left:15%''>";
+                    str=str+"<p class='fa fa-times-circle'>Elimina</p></a>";
                 });
                 $("#risultato").html(str);
             });

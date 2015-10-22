@@ -43,13 +43,13 @@
                                 <a href="/amministrazione/dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Marker<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Luoghi<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="/amministrazione/modificamarker">Modifica marker</a>
+                                        <a href="/amministrazione/modificamarker">Visualizza luoghi</a>
                                     </li>
                                     <li>
-                                        <a href="/amministrazione/inserimentomarker">Aggiungi marker</a>
+                                        <a href="/amministrazione/inserimentomarker">Aggiungi luogo</a>
                                     </li>
                                 </ul>
                             </li>
@@ -57,7 +57,7 @@
                                 <a href="#"><i class="fa fa-wrench fa-fw"></i> Immagini<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="/amministrazione/mostraimmagini">Modifica immagini</a>
+                                        <a href="/amministrazione/mostraimmagini">Visualizza immagini</a>
                                     </li>
                                     <li>
                                         <a href="/amministrazione/InserisciImmagine">Inserisci Immagine</a>
