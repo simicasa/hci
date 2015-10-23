@@ -19,7 +19,7 @@
                 $.each(dt,function(){
                     str=str+"<div class='row'>";
                     str=str+"<div class='col-lg-6'><img src='/" + this.Immagine + "'></div>";
-                    str=str+"<div class='col-lg-6'><div class='panel panel-green'><div class='panel-heading'>Descrizione luogo</div><div class='panel-body'><p>" + this.Testo +"</p></div><div class='panel-footer'>" + this.DataFoto +"</div></div>";
+                    str=str+"<div class='col-lg-6'><div class='panel panel-primary'><div class='panel-heading'>Descrizione luogo</div><div class='panel-body'><p>" + this.Testo +"</p></div><div class='panel-footer'>" + this.DataFoto +"</div></div>";
                     str=str + "</div></div>";
                     str=str+"<a href='/amministrazione/modificaimmagine?id=" + this.id + "'>";
                     str=str+"<p class='fa fa-edit'>Modifica</p></a>";
