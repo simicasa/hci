@@ -4,7 +4,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Marker</h1>
+                    <h1 class="page-header">Luoghi</h1>
                 </div>
             </div>
 @if($val == 1)
