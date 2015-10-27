@@ -66,7 +66,7 @@ class controllermarker extends Controller
     }
     public function ritornaMarkerPerAPP(){
         
-        $ris = marker::select('Marker.id as id','Marker.latitudine as lat','Marker.longitudine as lng','Marker.nome_luogo as luogo',"Immagini.immagine as img")
+        $ris = marker::select('Marker.id as id','Marker.latitudine as latitudine','Marker.longitudine as longitudine','Marker.nome_luogo as nome_luogo',"Immagini.immagine as img")
             ->leftjoin("Immagini","Immagini.Id_marker","=","Marker.id")
             ->groupby("Marker.id")
             ->get();
