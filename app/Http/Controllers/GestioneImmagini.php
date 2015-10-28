@@ -120,22 +120,26 @@ class GestioneImmagini extends Controller
         $data=$req->input("data");
         $id=$req->input("id");
         $riga=Immagini::find($id);
-        $this->validate($req,[
-            'Immagine'=> 'required|image'
-        ],[
-            'Immagine.required'=>'Immagine non presente',
-            'Immagine.image'=>'Immagine non valida',
+        if(Input::file('Immagine')){
+            $this->validate($req,[
+                'Immagine'=> 'required|image'
+            ],[
+                'Immagine.required'=>'Immagine non presente',
+                'Immagine.image'=>'Immagine non valida',
             
-        ]
-        );
-        $image=Input::file('Immagine');
+            ]
+            );
+            $image=Input::file('Immagine');
         
-        $filename  = time() . '.' . $image->getClientOriginalExtension();
-        $percorso = 'upload/' . $filename;
-        Image::make($image->getRealPath())->resize(300, null, function($constraint){
+            $filename  = time() . '.' . $image->getClientOriginalExtension();
+            $percorso = 'upload/' . $filename;
+            Image::make($image->getRealPath())->resize(300, null, function($constraint){
             $constraint->aspectRatio();
-        })->save($percorso);
-        
+            })->save($percorso);
+        }
+        else{
+            $percorso=$riga->Immagine;
+        }
         $riga->Testo=$testo;
         $riga->DataFoto=$data;
         $riga->Immagine=$percorso;
