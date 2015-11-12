@@ -29,7 +29,7 @@
                 </div>
                 <div class="form-group">
                     <label>Immagine</label>
-                    <input type="file" name="Immagine" required class="form-control">
+                    <input type="file" name="Immagine" class="form-control">
                 </div>
                 <input class="btn btn-default" type="submit" value="invia">
             </form>
