@@ -72,7 +72,7 @@ class GestioneImmagini extends Controller
 
     public function GetImageFromApp(Request $req){
         $id = $req->input('id');
-        $elem = json_encode(Immagini::select('Immagine','Testo','DataFoto')->where('id_marker','=',$id)->oderby("DataFoto","DESC")->get());
+        $elem = json_encode(Immagini::select('Immagine','Testo','DataFoto')->where('id_marker','=',$id)->oderby("DataFoto","ASC")->get());
         return $elem;
     }
     /**
