@@ -17,7 +17,8 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/amministrazione/dashboard">StoryMap</a>
+                    
+                    <a class="navbar-brand" href="/amministrazione/dashboard"><img src="/immagini/logo%20130.png" width="28px"></a>
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li class="dropdown">
