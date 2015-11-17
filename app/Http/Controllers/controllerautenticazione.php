@@ -126,27 +126,35 @@ class controllerautenticazione extends Controller
      */
     public function update(Request $req)
     {
+        $id=$req->input("id");
         $username=$req->input("name");
         $email=$req->input("email");
         $password=$req->input("password");
         $password2=$req->input("password_confirmation");
-        $this->validate($req,[
-            'name'=> 'required |unique:users',
-            'email'=>'required|email',
+        $riga=User::find($id);
+        
+        $controlli=[
             'password'=>'required|min:6|confirmed',
             'password_confirmation'=>'required|min:6',
-        ],[
+        ];
+        $messaggi=[
             'name.required'=>'Inserire il nome!',
+            'name.unique'=>'Errore nome già esistente',
             'email.required'=>'Inserire il proprio indirizzo email!',
             'email.email'=>'L\'indirizzo specificato deve essere un indirizzo email valido.',
+            'email.unique'=>'E-mail esistente',
             'password.required'=>'Scegliere una password!',
             'password.min'=>'Inserire una password di almeno 6 caratteri',
             'password.confirmed'=>'Errore,la password inserita non corrisponde a quella di conferma',
             'password_confirmation.required'=>'Password errata'
-        ]
-        );
-        $id=$req->input("id");
-        $riga=User::find($id);
+        ];
+        if($username != $riga->name)
+            $controlli['name']='required |unique:users';
+        if($email != $riga->email)
+            $controlli['email']='required|email|unique:users';
+        $this->validate($req,$controlli,$messaggi);
+        
+        
         $riga->name=$username;
         $riga->email=$email;
         $riga->password=Hash::make($password);

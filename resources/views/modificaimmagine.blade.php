@@ -21,7 +21,7 @@
                  <input type="hidden" name="id" value="{!! $riga->id!!}">
                 <div class="form-group">
                     <label>Testo</label>
-                    <textarea name="Testo" class="form-control">{!! $riga->Testo !!}</textarea>
+                    <textarea maxlength="200" name="Testo" class="form-control">{!! $riga->Testo !!}</textarea>
                 </div>
                 <div class="form-group">
                     <label>Data</label>

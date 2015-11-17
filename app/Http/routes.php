@@ -17,7 +17,7 @@ Route::post("/login","controllerautenticazione@autenticazione");
 Route::post("/ajax/getimage","GestioneImmagini@getimagebyid");
 
 Route::group(['middleware' => 'logged'],function(){
-    
+
 
     //Gestione utenti
     Route::get("/amministrazione/registrazione","controllerautenticazione@registrazione");
@@ -47,14 +47,14 @@ Route::group(['middleware' => 'logged'],function(){
     Route::get("/amministrazione/modificaimmagine","GestioneImmagini@edit");
     Route::post("/amministrazione/modificaimmagine","GestioneImmagini@update");
     Route::get("/amministrazione/eliminaimmagine","GestioneImmagini@destroy");
-    
+
 
     //Comunicazione con app
     Route::post("/app/prelevaMarker","controllermarker@ritornaMarkerPerAPP");
     Route::post("/app/prelevaImmagini","GestioneImmagini@GetImageFromApp");
-    
+
 });
 
-    //Comunicazione con app
-    Route::post("/app/prelevaMarker","controllermarker@ritornaMarkerPerAPP");
-    Route::post("/app/prelevaImmagini","GestioneImmagini@GetImageFromApp");
+//Comunicazione con app
+Route::post("/app/prelevaMarker","controllermarker@ritornaMarkerPerAPP");
+Route::post("/app/prelevaImmagini","GestioneImmagini@GetImageFromApp");

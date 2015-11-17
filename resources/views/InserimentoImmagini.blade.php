@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     <label>Testo</label>
-                    <textarea name="Testo" class="form-control"></textarea>
+                    <textarea maxlength="200" name="Testo" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Data</label>
